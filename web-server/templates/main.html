@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-   <title>Skylux Alpha Test</title>
+   <title>Skylux Alpha Test - Raw</title>
    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
    <!-- Latest compiled and minified CSS -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -10,19 +10,58 @@
    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
    <!-- Latest compiled and minified JavaScript -->
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 
-<body>
-   <h1>Skylux Alpha Test</h1>
+<style type="text/css">
+body{
+   background-color: black;
+}
+h2{
+   font-family: 'Open Sans';
+}
+.wrapper {
+   text-align: center;
+}
+.button {
+   position: absolute;
+   top: 50%;
+}
+
+.form-actions {
+    margin: 0;
+    background-color: transparent;
+    text-align: center;
+}
+</style>
+
+<body style="color:white;">
+   <div class = "jumbotron text-center"  style="color:black;">
+      <img src = "../static/skylux_v2.png" alt = "skylux logo" style = "width:151.5px;height:38.7px;">
+      <p>  Main Menu </p>
+   </div>
    {% for pin in pins %}
    <h2>{{ pins[pin].name }}
    {% if pins[pin].state == true %}
-      is currently <strong>on</strong></h2><div class="row"><div class="col-md-2">
-      <a href="/{{pin}}/off" class="btn btn-block btn-lg btn-default" role="button">Turn off</a></div></div>
+      is currently <strong>on</strong>
+   </h2>
+
+         <div class="row">
+            <div class="col-sm-offset-5 col-sm-2 text-center">
+               <a href="/{{pin}}/off" class="btn btn-default center-block" role="button">Turn off</a>
+            </div>
+         </div>
    {% else %}
-      is currently <strong>off</strong></h2><div class="row"><div class="col-md-2">
-      <a href="/{{pin}}/on" class="btn btn-block btn-lg btn-primary" role="button">Turn on</a></div></div>
+      is currently <strong>off</strong>
+      </h2>
+         <div class="row">
+            <div class="col-sm-offset-5 col-sm-2 text-center">
+               <a href="/{{pin}}/on" class="btn btn-primary center-block" role="button">Turn on</a>
+            </div>
+         </div>
    {% endif %}
    {% endfor %}
 </body>
 </html>
+
